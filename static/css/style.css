@@ -1,0 +1,9 @@
+.navbar-brand.logo {
+    color: red;
+    font-size: 44px;
+}
+
+.nav-item {
+    font-size:22px;
+    font-weight: bold;
+}
