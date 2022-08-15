@@ -25,6 +25,8 @@ services:
       - db
     links:
       - db
+    environment:
+      PYTHONUNBUFFERED: 1
 
   nginx:
     container_name: nginx
