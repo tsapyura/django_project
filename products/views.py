@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http.response import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 
 from products.forms import ProductForm
@@ -64,3 +65,55 @@ def show_products(request):
     }
 
     return render(request, "products/showProducts.html", context)
+
+
+def edit_product(request, pk):
+    if request.user.is_authenticated:
+        product = Product.objects.get(id=pk)
+        form = ProductForm(instance=product)
+        if product.user == request.user:
+            if request.method == 'POST':
+                form = ProductForm(request.POST, instance=product)
+                if form.is_valid():
+                    form.save()
+                    return redirect('/')
+
+            context = {'form': form}
+            return render(request, 'products/edit.html', context)
+        else:
+            return HttpResponseForbidden()
+    else:
+        return redirect('/')
+
+    # if request.user.is_authenticated:
+    #     product = get_object_or_404(Product, id=id)
+    #     if product.user == request.user:
+    #         if request.method == 'POST':
+    #             form = ProductForm(request.POST, request.FILES)
+    #             if form.is_valid():
+    #                 form.save()
+    #                 return redirect('/')
+    #         else:
+    #             return redirect('/')
+    #     else:
+    #         return HttpResponseForbidden()
+    #     context = {
+    #         "form": form
+    #     }
+    # return render(request, 'products/edit.html', context)
+
+    # if request.user.is_authenticated:
+    #     product = get_object_or_404(Product, id=id)
+    #     if product.user == request.user:
+    #         if request.method == "POST":
+    #             product.title = request.POST.get("title")
+    #             product.description = request.POST.get("description")
+    #             product.user = request.user
+    #             product.save()
+    #             return redirect("/")
+    #         else:
+    #             return render(request, "products/edit.html", {"product": product})
+    #     else:
+    #         return HttpResponseForbidden()
+    # else:
+    #     return redirect("/")

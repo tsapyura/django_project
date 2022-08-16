@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <div class="container">
         <div class="row">
             <h1>Learning Products</h1>
@@ -12,6 +13,7 @@
                         <p class="card-text">{{ product.description }}</p>
                         <p class="card-text">{{ product.category }}</p>
                         <a href="{% url 'product_details' id=product.id %}" class="card-link">Details</a>
+                        <a href="{% url 'edit_product' product.id %}" class="card-link">Edit</a>
                       </div>
                     </div>
                 {% endfor %}

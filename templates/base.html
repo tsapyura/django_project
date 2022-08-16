@@ -28,6 +28,16 @@
               {% endfor %}
           </ul>
         </div>
+          {% if request.user.is_authenticated %}
+          <div class="user" style="color: white; font-size: 19px; margin-right: 20px" >{{ request.user.first_name }} {{ request.user.last_name }}</div>
+          <div class="sign">
+
+              <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a type="button" class="btn btn-primary" href="{% url 'sign-up' %}">Sign Up</a>
+              <a type="button" class="btn btn-primary" href="{% url 'sign-in' %}">Sign In</a>
+            {% endif %}
+          </div>
       </div>
     </nav>
 {% block content %}
