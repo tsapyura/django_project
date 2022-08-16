@@ -46,14 +46,6 @@ def show_products(request):
 
     if category == None:
         products = Product.objects.filter(display_on_main_page=True, approved=True).order_by("-id")
-        # page_num = request.GET.get("page")
-        # paginator = Paginator(products, 2)
-        # try:
-        #     products = paginator.page(page_num)
-        # except PageNotAnInteger:
-        #     products = paginator.page(1)
-        # except EmptyPage:
-        #     products = paginator.page(paginator.num_pages)
     else:
         products = Product.objects.filter(category__name=category)
 
@@ -65,6 +57,21 @@ def show_products(request):
     }
 
     return render(request, "products/showProducts.html", context)
+
+
+def delete_product(request, pk):
+    if request.user.is_authenticated:
+        product = Product.objects.get(id=pk)
+        if product.user == request.user:
+            if request.method == 'POST':
+                product.delete()
+                return redirect('/')
+            context = {'product': product}
+            return render(request, 'products/delete.html', context)
+        else:
+            return HttpResponseForbidden()
+    else:
+        return redirect('/')
 
 
 def edit_product(request, pk):

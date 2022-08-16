@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">Delete Product</h1>
+    <h2>Are you sure you want to delete "{{ product.title }}"</h2>
+      <form action="{% url 'delete_product' product.id %}" method="post" enctype="multipart/form-data">
+          <div class="container m-3">
+
+                    {% csrf_token %}
+              <a href="{% url 'home' %}">Cencel</a>
+                    {{ form.as_p }}
+                    <input type="submit" name="Submit">
+
+          </div>
+      </form>
+
+{% endblock %}
