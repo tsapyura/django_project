@@ -10,22 +10,37 @@
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                {% if form.email.errors %}
+                <div class="form-text text-danger">{{ form.email.errors }}</div>
+                {% endif %}
               </div>
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username">
+                {% if form.username.errors %}
+                <div class="form-text text-danger">{{ form.username.errors }}</div>
+                {% endif %}
               </div>
                 <div class="mb-3">
                 <label for="first_name" class="form-label">First name</label>
                 <input type="text" class="form-control" id="first_name" name="first_name">
+                {% if form.first_name.errors %}
+                <div class="form-text text-danger">{{ form.first_name.errors }}</div>
+                {% endif %}
               </div>
               <div class="mb-3">
                 <label for="last_name" class="form-label">Last name</label>
                 <input type="text" class="form-control" id="last_name" name="last_name">
+                {% if form.last_name.errors %}
+                <div class="form-text text-danger">{{ form.last_name.errors }}</div>
+                {% endif %}
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                {% if form.password.errors %}
+                <div class="form-text text-danger">{{ form.password.errors }}</div>
+                {% endif %}
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
