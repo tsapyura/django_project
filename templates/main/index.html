@@ -1,26 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <div class="container">
-        <div class="row">
-            <h1>Learning Products</h1>
-            <div class="cards-list">
-                {% for product in products %}
-                    <div class="card" style="width: 18rem;">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ product.title }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
-                        <p class="card-text">{{ product.category }}</p>
-                        <a href="{% url 'product_details' id=product.id %}" class="card-link">Details</a>
-                        <a href="{% url 'edit_product' product.id %}" class="card-link">Edit</a>
-                        <a href="{% url 'delete_product' product.id %}" class="card-link">Delete</a>
-
-                      </div>
-                    </div>
-                {% endfor %}
-            </div>
+<div class="container col-xxl-8 px-4 py-5" bis_skin_checked="1">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5" bis_skin_checked="1">
+      <div class="col-10 col-sm-8 col-lg-6" bis_skin_checked="1">
+        <img src="https://wc1.prod1.arlocdn.net/p/e889a74abceb4cbfb349f69a00cd7867/d/Mr0D6rv7mjPLZ84YlTk7SGRqIpf7KCe4uhd2wwfd7ts1b6jY/iStock-1196997334.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6" bis_skin_checked="1">
+        <h5 class="display-7 fw-bold lh-1 mb-3">Free Online IT Courses</h5>
+        <p class="test">IT is one of our most popular categories, with in-depth courses and tutorials across all aspects of information technology. Sign up today to learn about cryptocurrency, blockchain, computer networking and server management. You can take free classes for in-demand languages like Python, JavaScript and C++, applying for official certification to take your programming career to the next level. We also cover growing skills like pentesting, full stack and MEAN stack development, and database management.</p>
+        <p class="test">Our courses have been developed by top IT organizations like CodeRed (premium cybersecurity tutorials), Microsoft (the world’s most successful software developer), the National Institute of Standards and Technology (a division of the US Department of Commerce) and the Computing Technology Industry Association (or CompTIA, an American IT certification group). We work with the best to bring you the best.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start" bis_skin_checked="1">
         </div>
-
+      </div>
     </div>
+  </div>
 {% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django_project.settings import STATIC_ROOT
 from .forms import UserSignUpForm, UserSignInForm
 from .models import MenuItem
 from products.models import Product, Category
@@ -10,14 +11,7 @@ from django.db.models import Q
 
 
 def home(request):
-    categories = Category.objects.all()
-    menu_items = MenuItem.objects.all()
-    products = Product.objects.filter(display_on_main_page=True, approved=True).order_by("-id")
-    return render(request, 'main/index.html', {
-        "menu_items": menu_items,
-        "products": products,
-        "categories": categories
-    })
+    return render(request, 'main/index.html', {'user': request.user, 'url': request.get_full_path})
 
 
 def sign_up(request):

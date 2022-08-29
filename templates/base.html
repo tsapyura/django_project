@@ -10,28 +10,25 @@
     <title>OurShop</title>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand logo" href="/">OurShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-              {% for menu_item in menu_items %}
-                  {% if menu_item.url == '/products/add' and not request.user.is_authenticated %}
-                  {% else %}
-                      <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="{{ menu_item.url }}">{{ menu_item.name }}</a>
-                      </li>
-                  {% endif %}
-              {% endfor %}
-          </ul>
-        </div>
-          {% if request.user.is_authenticated %}
-          <div class="user" style="color: white; font-size: 19px; margin-right: 20px" >{{ request.user.first_name }} {{ request.user.last_name }}</div>
-          <div class="sign">
 
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            {% load menu_menuitems %}
+            {% all_menu_items %}
+            {% include 'main/navbar_menu_items.html' %}
+
+        </div>
+
+          <div class="sign">
+            {% if request.user.is_authenticated %}
+             <h3 class="user">{{ request.user.first_name }} {{ request.user.last_name }}</h3>
               <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
             {% else %}
               <a type="button" class="btn btn-primary" href="{% url 'sign-up' %}">Sign Up</a>
@@ -40,8 +37,15 @@
           </div>
       </div>
     </nav>
+
 {% block content %}
 {% endblock %}
+<footer>
+    <div class="container-blocks">
+        <div class="copyright">@OurShop</div>
+    </div>
+
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>

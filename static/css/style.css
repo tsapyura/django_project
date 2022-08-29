@@ -5,14 +5,44 @@
 
 nav .sign {
     float:right;
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
 }
 
 nav .user {
-    font-size: 40px;
     color: white;
 }
 
 .nav-item {
     font-size:22px;
     font-weight: bold;
+}
+
+
+footer {
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    bottom: 0;
+    left:0;
+}
+
+footer .container-blocks {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.cards-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.card {
+    margin-left: 20px;
 }
