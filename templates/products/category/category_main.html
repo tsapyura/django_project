@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Categories</h1>
+            <h1>
+                11111111111111111
+                {% for product in products %}
+                <h2>
+                    {{ product.title }}
+                    {{ product.description }}
+
+                    {{ product.category }}
+                </h2>
+                {% endfor %}
+                </h1>
+
+<!--                {% for category in category %}-->
+
+
+
+
+<!--                    <div class="card " style="width: 18rem;">-->
+<!--                      <div class="card-body d-flex flex-column">-->
+<!--                        <h5 class="card-title">{{ category.cat_title }}</h5>-->
+<!--                        <p class="card-text ">{{ category.description }}</p>-->
+<!--                          <h6>Courses on this category:</h6>-->
+<!--                         {% for product in products %}-->
+<!--                            {% for prod_cat in product.category.all %}-->
+<!--                              {% if prod_cat == category %}-->
+<!--                                <li class="card-category ">{{ product.title }}</li>-->
+<!--                                      {% endif %}-->
+<!--                                      {% endfor %}-->
+<!--                                      {% endfor %}-->
+<!--                                <a class="btn btn-lg btn-block btn-primary btn-sm d-flex flex-column mt-auto " href="{% url 'category_details' id=category.id %}" >Details</a>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+            </div>
+        </div>
+    </div>
+{% endblock %}

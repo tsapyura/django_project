@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load categories %}
+    {% all_categories category=category %}
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">Learning Products</h1>
+                {% for product in products %}
+                    {% if product.approved == True and product.display_on_main_page == True %}
+                        <div class="card" style="width: 18rem;">
+                          <div class="card-body  d-flex flex-column">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                              <div class="card-categories">
+                              {% for category in categories %}
+                                  {% if product in category.products.all %}
+                                    <li>{{ category }}</li>
+                                  {% endif %}
+                              {% endfor %}
+                              </div>
+                              <div class="description">
+                              <p>{{ product.description|truncatechars:80 }}</p>
+                              </div>
+                              <div>
+                                  {% if request.user.id == product.user.id %}
+                                    <a href="{% url 'edit_product' id=product.id %}" class="product-button btn btn-primary btn-sm">Update</a>
+                                  {% endif %}
+                                  <a href="{% url 'product_details' id=product.id %}" class="product-button btn btn-primary btn-sm">Details</a>
+                              </div>
+                          </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

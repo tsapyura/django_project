@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Add Category</h1>
+        <form method="POST" action="{% url 'add_category' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="cat_title" class="form-label">Category title</label>
+                <input type="text" class="form-control" name="cat_title" id="cat_title" aria-describedby="cat_title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
