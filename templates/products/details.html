@@ -8,5 +8,12 @@
         <a href="#">{{ product.user.first_name }} {{ product.user.last_name }}</a>
         <a href="#">{{ product.approved_by.username }}</a>
     </div>
+
+        {% load cart %}
+        {% if product in products %}
+            <a type="button" class="btn btn-secondary">You have already purchased this</a>
+        {% else %}
+            <a href="{% url 'add_to_cart' product_id=product.id %}" type="button" class="btn btn-lg {{ button_status }}">Buy A Course</a>
+        {% endif %}
 </div>
 {% endblock %}

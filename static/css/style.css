@@ -46,3 +46,18 @@ footer .container-blocks {
 .card {
     margin-left: 20px;
 }
+
+
+.cart-list .cart-item .product-title {
+    font-weight: bold;
+}
+
+.cart-remove {
+    color:white;
+    transition: 0.3s ease-in-out;
+}
+
+.cart-remove:hover {
+    color:white;
+    font-size: 20px;
+}
