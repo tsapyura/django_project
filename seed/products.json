@@ -1,0 +1,164 @@
+[
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "Python",
+        "user": 3,
+        "description": "python course",
+        "price": 1700,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+        "title": "Java",
+        "user": 3,
+        "description": "java course",
+        "price": 1700,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+        "title": "PHP",
+        "user": 3,
+        "description": "php course",
+        "price": 1400,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+        "title": "English",
+        "user": 3,
+        "description": "english courses",
+        "price": 1000,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+        "title": "German",
+        "user": 3,
+        "description": "german courses",
+        "price": 1000,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+        "title": "Moto",
+        "user": 3,
+        "description": "moto courses",
+        "price": 1600,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+        "title": "Extrim driving",
+        "user": 3,
+        "description": "extrim driving courses",
+        "price": 2000,
+        "approved_by": 3,
+        "approved": true,
+        "display_on_main_page": true
+    }
+},
+{
+    "model": "products.category",
+    "pk": 13,
+    "fields": {
+        "title": "IT-coutses",
+        "slug": "it-courses",
+        "user": 3,
+        "parent_id": null,
+        "products": [
+            5,
+            6,
+            7
+        ]
+    }
+},
+{
+    "model": "products.category",
+    "pk": 14,
+    "fields": {
+        "title": "Languages",
+        "slug": "languages",
+        "user": 3,
+        "parent_id": null,
+        "products": [
+            8,
+            9
+        ]
+    }
+},
+{
+    "model": "products.category",
+    "pk": 15,
+    "fields": {
+        "title": "Driving",
+        "slug": "driving",
+        "user": 3,
+        "parent_id": null,
+        "products": [
+            10,
+            11
+        ]
+    }
+},
+{
+    "model": "products.order",
+    "pk": 1,
+    "fields": {
+        "user": 3,
+        "message": "",
+        "address": "",
+        "name": "ura",
+        "email": "",
+        "total_price": 3000
+    }
+},
+{
+    "model": "products.orderitem",
+    "pk": 1,
+    "fields": {
+        "product": 8,
+        "order": 1
+    }
+},
+{
+    "model": "products.orderitem",
+    "pk": 2,
+    "fields": {
+        "product": 11,
+        "order": 1
+    }
+}
+]

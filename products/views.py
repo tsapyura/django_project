@@ -35,7 +35,7 @@ def add_product(request):
                         category_id = int(category_id)
                         category = Category.objects.get(id=category_id)
                         category.products.add(product)
-                return redirect("/")
+                return redirect("/products")
             else:
                 return render(request, "products/add.html", {"form": form})
 
@@ -80,6 +80,11 @@ def edit_product(request, id):
             else:
                 product.title = request.POST.get("title")
                 product.description = request.POST.get("description")
+                product.price = request.POST.get("price")
+                if request.POST.get("approved") is None:
+                    product.approved = False
+                if request.POST.get("display_on_main_page") is None:
+                    product.display_on_main_page = False
                 product.save()
                 if request.POST.getlist("category", False):
                     print(request.POST.getlist("category"))
@@ -87,7 +92,7 @@ def edit_product(request, id):
                         category_id = int(category_id)
                         category = Category.objects.get(id=category_id)
                         category.products.add(product)
-                return redirect("/")
+                return redirect("/products")
         else:
             return render(request, '404.html')
     else:
@@ -95,7 +100,8 @@ def edit_product(request, id):
 
 
 def add_category(request):
-    if request.user.is_authenticated and request.user.is_staff:
+    print("-------------------------------------------------")
+    if request.user.is_authenticated:
         if request.method == "POST":
             if request.POST.get("title"):
                 category = Category()
@@ -125,11 +131,6 @@ def add_category(request):
 def category_page(request, slug):
     try:
         category = Category.objects.get(slug=slug)
-        categories = Category.objects.order_by("id")
     except Category.DoesNotExist:
         raise Http404()
-    return render(request, "products/all_products.html", {"products": category.products.all(),
-                                                          'category': category,
-                                                          'categories': categories,
-                                                          'category_id': category,
-                                                          'current_slug': slug})
+    return render(request, "products/category_products.html", {"products": category.products.all})

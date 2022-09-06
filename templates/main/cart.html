@@ -3,22 +3,35 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Your cart</h1>
-        <ul class="list-group cart-list" >
+        <ul class="list-group cart-list">
             {% if products %}
                 {% for product in products %}
-                  <li class="list-group-item d-flex justify-content-between align-items-start " >
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                       <div class="fw-bold">{{ product.title }}</div>
                       {{ product.description }}
                     </div>
-                    <span class="badge bg-danger rounded-pill"><a class="cart-remove" href="{% url 'remove_from_cart' product_id=product.id %}"><i class="fa-solid fa-circle-xmark"></i></a></span>
+                      <div class="additional">
+                          <span class="badge bg-danger rounded-pill"><a class="cart-remove" href="{% url 'remove_from_cart' product_id=product.id %}"><i class="fa-solid fa-circle-xmark"></i></a></span>
+                          <div class="fw-bold">{{ product.price }}$</div>
+                      </div>
+
                   </li>
                 {% endfor %}
+                 <li class="list-group-item d-flex justify-content-between align-items-start">
+                     <div>
+                         Total price: <strong>{{ total_price }}$</strong>
+                     </div>
+
+                 </li>
             {% else %}
                 <h1>Your Cart is Empty</h1>
             {% endif %}
         </ul>
+            {% if products %}
+                <a href="{% url 'order' %}" class="btn btn-lg btn-center btn-primary">Make Order</a>
+            {% endif %}
+
     </div>
 </div>
 {% endblock %}

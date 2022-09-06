@@ -7,13 +7,21 @@
         <form method="POST" action="{% url 'add_category' %}">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="cat_title" class="form-label">Category title</label>
-                <input type="text" class="form-control" name="cat_title" id="cat_title" aria-describedby="cat_title">
+                <label for="title" class="form-label">Name of category</label>
+                <input type="text" class="form-control" name="title" id="title" aria-describedby="title">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
+                <label for="title" class="form-label">Slug for category</label>
+                <input type="text" class="form-control" name="slug" id="slug" aria-describedby="title">
             </div>
+            <div class="div mb-3">
+                <select class="form-select form-select-lg mb-3" multiple name="parent_category" aria-label=".form-select-lg example">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.title }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

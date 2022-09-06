@@ -22,6 +22,26 @@
                     {% endfor %}
                 </select>
             </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">Price</label>
+                <input type="number" class="form-control" name="price" id="price" aria-describedby="price" value="{{ product.price }}">
+            </div>
+            {% if user.is_superuser %}
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" name="approved" id="approved"
+                     {% if product.approved %}
+                        checked
+                     {% endif %}
+                  >Approved
+                </div>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" name="display_on_main_page" id="display_on_main_page"
+                   {% if product.approved %}
+                        checked
+                    {% endif %}>
+                    View on main page
+                </div>
+            {% endif %}
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

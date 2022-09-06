@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load categories %}
+{% current_category %}
+
 <div class="container">
     <div class="row">
         <div class="cards-list">

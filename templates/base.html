@@ -18,13 +18,9 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-
-            {% load menu_menuitems %}
-            {% all_menu_items %}
-            {% include 'main/navbar_menu_items.html' %}
-
-        </div>
+        {% load menu_menuitems %}
+        {% all_menu_items %}
+        {% include 'menu_items_nav.html' %}
 
           <div class="sign">
               <div class="cart">

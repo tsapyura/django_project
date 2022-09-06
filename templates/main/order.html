@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Make your order</h1>
+        <form method="POST" action="{% url 'order' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Your name</label>
+                <input type="text" class="form-control" name="name" id="name" aria-describedby="title">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Your email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Your address</label>
+                <input type="text" class="form-control" id="address" name="address">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Additional Message</label>
+                <textarea class="form-control" id="description" name="description"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

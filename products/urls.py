@@ -9,6 +9,6 @@ urlpatterns = [
     path("/update/<int:id>", edit_product, name="edit_product"),
     path("/delete_product/<str:pk>", delete_product, name="delete_product"),
     path("/category/<str:slug>", category_page, name="category_page"),
-    path("/category/add", add_category, name="add_category"),
+    path("/category-add", add_category, name="add_category"),
 
 ]
