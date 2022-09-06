@@ -10,6 +10,18 @@ def product_home(request):
     products = Product.objects.order_by("title")
     categories = Category.objects.order_by("-id")
 
+    page = request.GET.get('page', 1)
+    products_list = Product.objects.all()
+
+    paginator = Paginator(products_list, 4)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     return render(request, 'products/all_products.html', {
         "products": products,
         'categories': categories,
