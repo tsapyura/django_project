@@ -15,6 +15,14 @@ def home(request):
     return render(request, 'main/index.html', {'user': request.user, 'url': request.get_full_path})
 
 
+def about(request):
+    return render(request, 'main/about.html')
+
+
+def contact(request):
+    return render(request, 'main/contact.html')
+
+
 def sign_up(request):
     form = UserSignUpForm(request.POST or None)
     if form.is_valid():
@@ -71,7 +79,8 @@ def add_to_cart(request, product_id):
 def cart(request):
     if request.session.get("products", False):
         products = Product.objects.filter(id__in=request.session.get("products"))
-        return render(request, "main/cart.html", {"products": products, "total_price": request.session.get("cart_total_price", 0)})
+        return render(request, "main/cart.html", {"products": products,
+                                                  "total_price": request.session.get("cart_total_price", 0)})
     else:
         return render(request, "main/cart.html", {})
 
